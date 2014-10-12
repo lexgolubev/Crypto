@@ -4,10 +4,10 @@
 #define ullong unsigned long long
 #define uint unsigned int
 
-class NumberOperator
+class Numbers
 {
 private:
-    NumberOperator();
+    Numbers();
 public:
     static ullong transpose(ullong text, const int* table, int length);
     static ullong transpose(uint text, const int* table, int length);
