@@ -1,9 +1,9 @@
 #include "keygenerator.h"
 
 DesRoundKeyGenerator::DesRoundKeyGenerator(ullong key) : key(key) {
-    ullong left = NumberOperator::transpose(key, TRANSPOSE_KEY_TABLE1, 28);
-    ullong right = NumberOperator::transpose(key, TRANSPOSE_KEY_TABLE2, 28);
-    for (int i = 0; i < 16; i++) {
+    ullong left = Numbers::transpose(key, TRANSPOSE_KEY_TABLE1, 28);
+    ullong right = Numbers::transpose(key, TRANSPOSE_KEY_TABLE2, 28);
+    for (int i = 1; i < 17; i++) {
         int n;
         if (i == 1 || i == 2 || i == 9 || i == 16) {
             n = 1;
@@ -13,12 +13,12 @@ DesRoundKeyGenerator::DesRoundKeyGenerator(ullong key) : key(key) {
         left = leftCyclicShift(left, n);
         right = leftCyclicShift(right, n);
         ullong lr = (left << 28) | right;
-        keys[i] = NumberOperator::transpose(lr, COMPRESS_KEY_TABLE, 48);
+        keys[i - 1] = Numbers::transpose(lr, COMPRESS_KEY_TABLE, 48);
     }
 }
 
 ullong DesRoundKeyGenerator::getKey(int i) {
-    return keys[i];
+    return keys[i - 1];
 }
 
 ullong DesRoundKeyGenerator::leftCyclicShift(ullong text, int bit) {

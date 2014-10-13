@@ -1,7 +1,8 @@
 #ifndef DESROUNDKEYGENERATOR_H
 #define DESROUNDKEYGENERATOR_H
 
-#include "numberoperator.h"
+#include "numbers.h"
+#include <iostream>
 
 class DesRoundKeyGenerator {
 private:

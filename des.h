@@ -2,7 +2,7 @@
 #define DES_H
 
 #include "keygenerator.h"
-#include "numberoperator.h"
+#include "numbers.h"
 
 class Des
 {
@@ -80,14 +80,11 @@ private:
         34, 2, 42, 10, 50, 18, 58, 26, 33, 1, 41, 9, 49, 17, 57, 25
     };
 private:
-    ullong key;
-    DesRoundKeyGenerator* generator;
-private:
-    ullong f(uint b, ullong k);
+    ullong f(uiint text, ullong key);
 public:
-    Des(ullong key);
-    ullong encrypt(ullong text);
-    ullong decrypt(ullong text);
+    Des();
+    ullong encrypt(ullong text, ullong key);
+    ullong decrypt(ullong text, ullong key);
 };
 
 #endif // DES_H
